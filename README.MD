@@ -33,6 +33,7 @@ brew install kubectl
 brew install argo
 brew install helm
 brew intall leiningen
+brew install dbt
 ```
 Apart from general development tools like docker and jdk11.
 
@@ -105,4 +106,51 @@ Instead of using the portforwaring on terminal, you can use k9s if you are famil
 
 ```bash
 brew install k9s
+```
+
+#### Developing Environment
+
+Note: to run the connector locally or dbt it's required to have a portforward to the database:
+
+```bash
+kubectl port-forward --namespace argo postgres-postgresql-0 5432:5432 
+```
+
+##### Connector (connectors/covid19-uk-ingestions)
+
+The project contains the connector for the covid19-uk api, also it has a migration feature which it's used to create the staing tables in databases.
+
+###### Tests
+
+```bash
+lein do clean, test
+```
+
+###### Repl
+
+```bash
+lein do clean, repl
+```
+
+###### Migrations
+
+Run migrations for test database used by dbt tests
+
+```bash
+lein with-profile +db-migrations repl
+user=>(perform-db-migrations ["test"])
+```
+
+##### Dbt (data-models)
+
+###### Run dbt
+
+```bash
+dbt run --profile test --profiles-dir resources
+```
+
+###### Testing db
+
+```bash
+dbt test --profile test --profiles-dir resources
 ```
