@@ -11,3 +11,5 @@ helm install -n argo postgres bitnami/postgresql \
  --set global.postgresql.servicePort=5432
 
 sleep 20
+
+kubectl run postgres-postgresql-client --rm -i --restart='Never' --namespace argo --image docker.io/bitnami/postgresql:11.11.0-debian-10-r31 --env="PGPASSWORD=covid19_password" --command -- psql --host postgres-postgresql -U covid19_user -d public -p 5433 < create_test_db.sql

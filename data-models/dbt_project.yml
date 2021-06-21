@@ -14,7 +14,7 @@ profile: 'default'
 # found in the "models/" directory. You probably won't need to change these!
 source-paths: ["models"]
 analysis-paths: ["analysis"]
-test-paths: ["tests"]
+test-paths: ["data-tests"]
 data-paths: ["data"]
 macro-paths: ["macros"]
 snapshot-paths: ["snapshots"]

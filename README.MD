@@ -95,6 +95,10 @@ To access database directly:
  kubectl run postgres-postgresql-psql --rm --tty -i --restart='Never' --namespace argo --image docker.io/bitnami/postgresql:11.11.0-debian-10-r31 --env="PGPASSWORD=$POSTGRES_PASSWORD" --command -- psql --host postgres-postgresql -U covid19_user -d covid19_dev -p 5432
 ```
 
+Portforward to db:
+```bash
+kubectl port-forward --namespace argo postgres-postgresql-0 5432:5432
+```
 
 #### k9s
 Instead of using the portforwaring on terminal, you can use k9s if you are familiar.
