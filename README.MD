@@ -65,7 +65,7 @@ Apart from general development tools like docker and jdk11.
 ### Deploy locally:
 
 ```bash
-minikube start covid19_cluster
+minikube start
 cd scripts
 ./deploy-argo.sh && ./deploy-db.sh && ./deploy-db-migrations-workflow.sh && ./deploy-covid19-workflow.sh && ./deploy-metabase.sh
 ```
